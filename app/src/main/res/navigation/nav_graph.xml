@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/fragmentLogin">
+
+    <fragment
+        android:id="@+id/fragmentMovies"
+        android:name="com.saad.homeflix.ui.modules.movies.FragmentMovies"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_fragmentMovies_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+        <action
+            android:id="@+id/action_fragmentMovies_to_fragmentFavorites"
+            app:destination="@id/fragmentFavorites" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.saad.homeflix.ui.modules.detail.FragmentDetail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="movieObj"
+            app:argType="com.saad.homeflix.data.models.ResultsItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFavorites"
+        android:name="com.saad.homeflix.ui.modules.favorites.FragmentFavorites"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_fragmentFavorites_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.saad.homeflix.ui.modules.login.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentRegister"
+            app:destination="@id/fragmentRegister" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentMovies"
+            app:destination="@id/fragmentMovies" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegister"
+        android:name="com.saad.homeflix.ui.modules.register.FragmentRegister"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentMovies"
+            app:destination="@id/fragmentMovies" />
+    </fragment>
+</navigation>

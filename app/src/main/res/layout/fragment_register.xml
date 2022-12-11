@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_bg"
+    tools:context=".ui.modules.register.FragmentRegister">
+
+    <TextView
+        android:id="@+id/tv_join_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:text="@string/join_us"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_discover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center"
+        android:text="@string/discover_your_favorite_movies"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_join_us"
+        app:layout_constraintStart_toStartOf="@+id/tv_join_us"
+        app:layout_constraintTop_toBottomOf="@id/tv_join_us" />
+
+    <EditText
+        android:id="@+id/et_username"
+        style="@style/et_style"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:autofillHints="emailAddress"
+        android:hint="@string/username"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_discover"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        style="@style/et_style"
+        android:autofillHints="emailAddress"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_username" />
+
+    <EditText
+        android:id="@+id/et_password"
+        style="@style/et_style"
+        android:autofillHints="password"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_email" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_register"
+        style="@style/btn_style"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

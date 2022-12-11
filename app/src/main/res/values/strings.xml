@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Homeflix</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="search_movie">Search Movie</string>
+    <string name="favourites">Favourites</string>
+    <string name="movie_overview">Movie Overview</string>
+    <string name="hello_again">Hello Again!</string>
+    <string name="welcome_back_you_ve_n_been_missed">Welcome back you\'ve been missed</string>
+    <string name="not_a_member">Not a member? <font color='#000000'>Register now</font></string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="join_us">Join us</string>
+    <string name="discover_your_favorite_movies">Discover your favorite movies</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
+
+</resources>
