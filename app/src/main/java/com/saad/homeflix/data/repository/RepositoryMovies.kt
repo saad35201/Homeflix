@@ -8,6 +8,7 @@ import com.saad.homeflix.data.network.remote.MoviesApiService
 import com.saad.homeflix.utils.NetworkResult
 import com.saad.homeflix.utils.TAG
 import org.json.JSONObject
+import retrofit2.Response
 import javax.inject.Inject
 
 class RepositoryMovies @Inject constructor(
@@ -27,14 +28,7 @@ class RepositoryMovies @Inject constructor(
     suspend fun getMovies(api_key: String?) {
         _moviesResponseLiveData.postValue(NetworkResult.Loading())
         val response = service.getMovies(api_key)
-        if (response.isSuccessful && response.body()!=null){
-            _moviesResponseLiveData.postValue(NetworkResult.Success(response.body()))
-        }else if (response.errorBody()!=null){
-           val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
-            _moviesResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("status_message")))
-        }else{
-            _moviesResponseLiveData.postValue(NetworkResult.Error("Some thing went Wrong"))
-        }
+        handleResponse(response)
     }
 
     suspend fun searchMovie(
@@ -50,6 +44,17 @@ class RepositoryMovies @Inject constructor(
             val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
             _moviesResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("status_message")))
         }else{
+            _moviesResponseLiveData.postValue(NetworkResult.Error("Some thing went Wrong"))
+        }
+    }
+
+    private fun handleResponse(response: Response<ResponseMovies>) {
+        if (response.isSuccessful && response.body() != null) {
+            _moviesResponseLiveData.postValue(NetworkResult.Success(response.body()))
+        } else if (response.errorBody() != null) {
+            val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
+            _moviesResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("status_message")))
+        } else {
             _moviesResponseLiveData.postValue(NetworkResult.Error("Some thing went Wrong"))
         }
     }
