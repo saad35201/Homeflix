@@ -38,14 +38,7 @@ class RepositoryMovies @Inject constructor(
     ) {
         _moviesSearchResponseLiveData.postValue(NetworkResult.Loading())
         val response = service.searchMovie(api_key, query, page)
-        if (response.isSuccessful && response.body()!=null){
-            _moviesResponseLiveData.postValue(NetworkResult.Success(response.body()))
-        }else if (response.errorBody()!=null){
-            val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
-            _moviesResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("status_message")))
-        }else{
-            _moviesResponseLiveData.postValue(NetworkResult.Error("Some thing went Wrong"))
-        }
+        handleResponse(response)
     }
 
     private fun handleResponse(response: Response<ResponseMovies>) {

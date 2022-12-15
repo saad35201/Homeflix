@@ -1,5 +1,6 @@
 package com.saad.homeflix.di
 
+import com.saad.homeflix.data.network.remote.AuthApiService
 import com.saad.homeflix.data.network.remote.MoviesApiService
 import com.saad.homeflix.utils.BASE_URL
 import dagger.Module
@@ -65,10 +66,18 @@ object NetworkModule {
             .build()
     }
 
+    //services
+
     @Singleton
     @Provides
-    fun provideMoviesApiClient(retrofit: Retrofit): MoviesApiService {
+    fun provideMoviesApiService(retrofit: Retrofit): MoviesApiService {
         return retrofit.create(MoviesApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAuthApiService(retrofit: Retrofit): AuthApiService {
+        return retrofit.create(AuthApiService::class.java)
     }
 
 

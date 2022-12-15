@@ -9,7 +9,7 @@ import retrofit2.http.Url
 
 interface AuthApiService {
 
-    @POST("/users/signin")
+    @POST
     suspend fun login(
         @Url auth_url: String,
         @Body userRequest: UserRequest

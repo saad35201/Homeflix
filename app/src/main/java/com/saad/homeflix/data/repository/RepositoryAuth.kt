@@ -36,7 +36,7 @@ class RepositoryAuth @Inject constructor(
             _authResponseLiveData.postValue(NetworkResult.Success(response.body()))
         } else if (response.errorBody() != null) {
             val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
-            _authResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("status_message")))
+            _authResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("message")))
         } else {
             _authResponseLiveData.postValue(NetworkResult.Error("Some thing went Wrong"))
         }
