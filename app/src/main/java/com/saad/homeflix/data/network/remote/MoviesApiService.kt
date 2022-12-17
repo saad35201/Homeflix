@@ -17,6 +17,6 @@ interface MoviesApiService {
         @Query("api_key") api_key: String?,
         @Query("query") query: String,
         @Query("page") page: Int
-    ) : Response<ResponseMovies>
+    ): Response<ResponseMovies>
 
 }

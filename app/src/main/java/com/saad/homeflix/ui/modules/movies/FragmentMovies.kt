@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView.OnQueryTextListener
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.saad.homeflix.data.models.ResponseMovies
@@ -73,6 +72,14 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
                 return false
             }
         })
+
+        //search close btn click listener
+        val closeBtn: View =
+            mBinding.svMovies.findViewById(androidx.appcompat.R.id.search_close_btn)
+        closeBtn.setOnClickListener {
+            mBinding.svMovies.setQuery("", false)
+            mMoviesVm.getMovies()
+        }
 
     }
 
