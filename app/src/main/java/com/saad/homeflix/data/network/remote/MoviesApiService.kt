@@ -9,7 +9,8 @@ interface MoviesApiService {
 
     @GET("movie/popular?")
     suspend fun getMovies(
-        @Query("api_key") api_key: String?
+        @Query("api_key") api_key: String,
+        @Query("page") page: Int
     ): Response<ResponseMovies>
 
     @GET("search/movie?")

@@ -29,7 +29,7 @@ class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryM
 
     fun getMovies() {
         viewModelScope.launch {
-            moviesRepository.getMovies(API_KEY)
+            moviesRepository.getMovies(API_KEY,page)
         }
     }
 

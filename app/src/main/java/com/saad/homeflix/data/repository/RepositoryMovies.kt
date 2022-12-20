@@ -25,9 +25,9 @@ class RepositoryMovies @Inject constructor(
     val moviesSearchResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
         get() = _moviesSearchResponseLiveData
 
-    suspend fun getMovies(api_key: String?) {
+    suspend fun getMovies(api_key: String,page: Int) {
         _moviesResponseLiveData.postValue(NetworkResult.Loading())
-        val response = service.getMovies(api_key)
+        val response = service.getMovies(api_key,page)
         handleResponse(response)
     }
 

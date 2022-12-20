@@ -11,14 +11,10 @@ class MoviesPagingSrc(private val service: MoviesApiService) : PagingSource<Int,
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResultsItem> {
         return try {
             val currentPage = params.key ?: 1
-            val response = service.getMovies(API_KEY)
-            val responseData = mutableListOf<ResultsItem>()
-            val data = response.body()?.results ?: emptyList()
-            responseData.addAll(data)
-
+            val response = service.getMovies(API_KEY, currentPage)
 
             LoadResult.Page(
-                data = responseData,
+                data = response.body()!!.results!!,
                 prevKey = if (currentPage == 1) null else currentPage - 1,
                 nextKey = if (currentPage == response.body()!!.totalPages) null else currentPage + 1
             )
