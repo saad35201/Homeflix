@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/fragmentLogin">
+    app:startDestination="@id/fragmentMovies">
 
     <fragment
         android:id="@+id/fragmentMovies"
@@ -35,25 +35,5 @@
             android:id="@+id/action_fragmentFavorites_to_fragmentDetail"
             app:destination="@id/fragmentDetail" />
     </fragment>
-    <fragment
-        android:id="@+id/fragmentLogin"
-        android:name="com.saad.homeflix.ui.modules.login.FragmentLogin"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_fragmentLogin_to_fragmentRegister"
-            app:destination="@id/fragmentRegister" />
-        <action
-            android:id="@+id/action_fragmentLogin_to_fragmentMovies"
-            app:destination="@id/fragmentMovies" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentRegister"
-        android:name="com.saad.homeflix.ui.modules.register.FragmentRegister"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
-        <action
-            android:id="@+id/action_fragmentRegister_to_fragmentMovies"
-            app:destination="@id/fragmentMovies" />
-    </fragment>
+
 </navigation>

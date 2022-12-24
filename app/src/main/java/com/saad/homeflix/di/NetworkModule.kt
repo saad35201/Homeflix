@@ -2,7 +2,7 @@ package com.saad.homeflix.di
 
 import com.saad.homeflix.data.network.remote.AuthApiService
 import com.saad.homeflix.data.network.remote.MoviesApiService
-import com.saad.homeflix.utils.BASE_URL
+import com.saad.homeflix.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,7 +46,7 @@ object NetworkModule {
         val httpBuilder = OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(30,java.util.concurrent.TimeUnit.SECONDS)
+            .connectTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
             .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
             .writeTimeout(50, java.util.concurrent.TimeUnit.SECONDS)
 

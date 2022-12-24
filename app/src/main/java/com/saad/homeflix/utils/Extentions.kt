@@ -23,6 +23,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.snackbar.Snackbar
 import com.saad.homeflix.R
 import com.saad.homeflix.databinding.ProgressDialogBinding
+import com.saad.homeflix.utils.Constants.IMAGE_BASE_URL
 import kotlinx.coroutines.internal.synchronized
 
 fun View.showKeyboard() {

@@ -3,40 +3,18 @@ package com.saad.homeflix.ui.modules.movies
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.saad.homeflix.data.models.ResponseMovies
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.saad.homeflix.data.models.ResultsItem
 import com.saad.homeflix.data.repository.RepositoryMovies
-import com.saad.homeflix.utils.API_KEY
-import com.saad.homeflix.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryMovies) :
     ViewModel() {
 
-    //test
-    var page=1
-
-    //live data all movies
-    val moviesResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
-        get() = moviesRepository.moviesResponseLiveData
-
-    //live data search movies
-    val moviesSearchResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
-        get() = moviesRepository.moviesSearchResponseLiveData
-
-
-    fun getMovies() {
-        viewModelScope.launch {
-            moviesRepository.getMovies(API_KEY,page)
-        }
-    }
-
-    fun searchMovie(query: String){
-        viewModelScope.launch {
-            moviesRepository.searchMovie(API_KEY,query,page)
-        }
-    }
+    //livedata
+     val moviesLiveData = moviesRepository.getMovies().cachedIn(viewModelScope)
 
 }

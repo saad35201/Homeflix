@@ -2,27 +2,22 @@ package com.saad.homeflix.ui.modules.movies
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.saad.homeflix.data.models.ResultsItem
 import com.saad.homeflix.databinding.RvMoviesItemBinding
 import com.saad.homeflix.utils.loadImage
 
-class AdapterMovies(private val movies: List<ResultsItem>,private val itemClickListener: ItemClickListener) :
-    RecyclerView.Adapter<AdapterMovies.MoviesVH>() {
+class AdapterMovies : PagingDataAdapter<ResultsItem, AdapterMovies.MoviesVH>(COMPARATOR) {
 
     class MoviesVH(private val binding: RvMoviesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ResultsItem, itemClickListener: ItemClickListener) {
+        fun bind(item: ResultsItem) {
             //setting data
             item.posterPath?.let { binding.imgPoster.loadImage(item.posterPath) }
             binding.tvName.text = item.title
             binding.tvReleaseDate.text = item.releaseDate
-
-            //invoking item click
-            itemView.setOnClickListener {
-                itemClickListener.onItemClicked(item)
-            }
-
         }
     }
 
@@ -33,12 +28,22 @@ class AdapterMovies(private val movies: List<ResultsItem>,private val itemClickL
     }
 
     override fun onBindViewHolder(holder: MoviesVH, position: Int) {
-        val item = movies[position]
-        holder.bind(item,itemClickListener)
+        val item = getItem(position)
+        if (item != null) {
+            holder.bind(item)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return movies.size
+
+    companion object {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<ResultsItem>() {
+            override fun areItemsTheSame(oldItem: ResultsItem, newItem: ResultsItem): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: ResultsItem, newItem: ResultsItem): Boolean =
+                oldItem == newItem
+
+        }
     }
 
 }
