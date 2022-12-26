@@ -22,10 +22,6 @@ class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryM
     val moviesResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
         get() = moviesRepository.moviesResponseLiveData
 
-    //live data search movies
-    val moviesSearchResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
-        get() = moviesRepository.moviesSearchResponseLiveData
-
 
     fun getMovies() {
         viewModelScope.launch {

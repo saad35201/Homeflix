@@ -1,32 +1,26 @@
 package com.saad.homeflix.data.base
 
 import com.saad.homeflix.utils.NetworkResult
+import org.json.JSONObject
 import retrofit2.Response
 
 open class BaseRepository {
 
-//    suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>): Response<T> {
-//
-//        return when (val result: NetworkResult<T> = safeApiResult(call)) {
-//            is NetworkResult.Success ->
-//                Response(result.data, null)
-//            is NetworkResult.Error -> {
-//                Response(null, result.errorResponse)
-//            }
-//        }
-//    }
-//
-//    private suspend fun <T : Any> safeApiResult(call: suspend () -> Response<T>): NetworkResult<T> {
-//        try {
-//            val response = call.invoke()
-//            if (response.isSuccessful) {
-//                return NetworkResult.Success(response.body()!!)
-//            }
-//            return NetworkResult.Error(parseError(response))
-//        } catch (ex: Exception) {
-//            ex.printStackTrace()
-//            return NetworkResult.Error(parseError(ex))
-//        }
-//    }
+    suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>): NetworkResult<T> {
+        return try {
+            val response = call.invoke()
+            if (response.isSuccessful) {
+                NetworkResult.Success(response.body()!!)
+            } else if (response.errorBody() != null) {
+                val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
+                NetworkResult.Error(errorObj.getString("status_message"))
+            } else {
+                NetworkResult.Error("Something went wrong")
+            }
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            NetworkResult.Error(ex.message)
+        }
+    }
 
 }

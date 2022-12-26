@@ -49,7 +49,6 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
 
     override fun observeViewModels() {
         observe(mMoviesVm.moviesResponseLiveData, ::handleMoviesList)
-        observe(mMoviesVm.moviesSearchResponseLiveData, ::handleSearchResult)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,22 +82,6 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
 
     }
 
-    private fun handleSearchResult(status: NetworkResult<ResponseMovies>) {
-        mProgressDialog.dismiss()
-        when (status) {
-            is NetworkResult.Success -> {
-                status.data?.let {
-                    bindListData(it.results)
-                }
-            }
-            is NetworkResult.Error -> {
-                status.message?.let { it1 -> mBinding.root.showSnackBar(it1, 3000) }
-            }
-            is NetworkResult.Loading -> {
-                mProgressDialog.show()
-            }
-        }
-    }
 
     private fun handleMoviesList(status: NetworkResult<ResponseMovies>) {
         mProgressDialog.dismiss()
