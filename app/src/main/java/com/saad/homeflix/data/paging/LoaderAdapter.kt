@@ -6,11 +6,12 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.saad.homeflix.databinding.ProgressBarBinding
 import com.saad.homeflix.databinding.ProgressDialogBinding
 
 class LoaderAdapter : LoadStateAdapter<LoaderAdapter.LoaderVH>() {
 
-    class LoaderVH(private val binding: ProgressDialogBinding) :
+    class LoaderVH(private val binding: ProgressBarBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(loadState: LoadState) {
             binding.root.isVisible = loadState is LoadState.Loading
@@ -23,7 +24,7 @@ class LoaderAdapter : LoadStateAdapter<LoaderAdapter.LoaderVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoaderVH {
         val binding =
-            ProgressDialogBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ProgressBarBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return LoaderVH(binding)
     }
 
