@@ -1,6 +1,7 @@
 package com.saad.homeflix.data.base
 
 import com.saad.homeflix.utils.NetworkResult
+import okio.IOException
 import org.json.JSONObject
 import retrofit2.Response
 
@@ -17,9 +18,12 @@ open class BaseRepository {
             } else {
                 NetworkResult.Error("Something went wrong")
             }
-        } catch (ex: Exception) {
+        } catch (ex: IOException) {
             ex.printStackTrace()
             NetworkResult.Error(ex.message)
+        }catch (ex: Exception){
+            ex.printStackTrace()
+            NetworkResult.Error(null)
         }
     }
 
