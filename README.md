@@ -1,6 +1,6 @@
 # Homeflix
 
-Bais features:
+Basic features:
 ->Auth
 ->Movies List
 ->Movies Detail
