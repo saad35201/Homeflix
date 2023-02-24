@@ -14,25 +14,19 @@ class RepositoryMovies @Inject constructor(
     private var service: MoviesApiService
 ) : BaseRepository() {
 
-    //live data for all movies response
-    private val _moviesResponseLiveData = MutableLiveData<NetworkResult<ResponseMovies>>()
-    val moviesResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
-        get() = _moviesResponseLiveData
 
-
-    suspend fun getMovies(api_key: String, page: Int) {
-        _moviesResponseLiveData.postValue(NetworkResult.Loading())
-        _moviesResponseLiveData.postValue(safeApiCall { service.getMovies(api_key, page) }!!)
+    suspend fun getMovies(api_key: String, page: Int): NetworkResult<ResponseMovies> {
+        return safeApiCall { service.getMovies(api_key, page) }
     }
 
-    suspend fun searchMovie(
-        api_key: String?,
-        query: String,
-        page: Int
-    ) {
-        _moviesResponseLiveData.postValue(NetworkResult.Loading())
-        _moviesResponseLiveData.postValue(safeApiCall { service.searchMovie(api_key,query, page) }!!)
-    }
+//    suspend fun searchMovie(
+//        api_key: String?,
+//        query: String,
+//        page: Int
+//    ) {
+//        _moviesResponseLiveData.postValue(NetworkResult.Loading())
+//        _moviesResponseLiveData.postValue(safeApiCall { service.searchMovie(api_key,query, page) }!!)
+//    }
 
 
 }

@@ -48,7 +48,7 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
     }
 
     override fun observeViewModels() {
-        observe(mMoviesVm.moviesResponseLiveData, ::handleMoviesList)
+        observe(mMoviesVm.moviesLiveData, ::handleMoviesList)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,20 +57,20 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
         //progress dialog
         mProgressDialog = requireContext().progressDialog()
 
-        //query text change listener
-        mBinding.svMovies.setOnQueryTextListener(object : OnQueryTextListener,
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (!query.equals("")) {
-                    mMoviesVm.searchMovie(query!!)
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
+//        //query text change listener
+//        mBinding.svMovies.setOnQueryTextListener(object : OnQueryTextListener,
+//            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                if (!query.equals("")) {
+//                    mMoviesVm.searchMovie(query!!)
+//                }
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return false
+//            }
+//        })
 
         //search close btn click listener
         val closeBtn: View =

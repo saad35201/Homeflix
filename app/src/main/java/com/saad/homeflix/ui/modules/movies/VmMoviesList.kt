@@ -1,6 +1,7 @@
 package com.saad.homeflix.ui.modules.movies
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.saad.homeflix.data.models.ResponseMovies
@@ -15,24 +16,23 @@ import javax.inject.Inject
 class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryMovies) :
     ViewModel() {
 
-    //test
-    var page=1
-
     //live data all movies
-    val moviesResponseLiveData: LiveData<NetworkResult<ResponseMovies>>
-        get() = moviesRepository.moviesResponseLiveData
+    private val mMoviesLiveData : MutableLiveData<NetworkResult<ResponseMovies>> by lazy { MutableLiveData() }
+
+    val moviesLiveData: LiveData<NetworkResult<ResponseMovies>> get() = mMoviesLiveData
 
 
     fun getMovies() {
         viewModelScope.launch {
-            moviesRepository.getMovies(API_KEY,page)
+            mMoviesLiveData.postValue(NetworkResult.Loading())
+            mMoviesLiveData.postValue(moviesRepository.getMovies(API_KEY,1))
         }
     }
 
-    fun searchMovie(query: String){
-        viewModelScope.launch {
-            moviesRepository.searchMovie(API_KEY,query,page)
-        }
-    }
+//    fun searchMovie(query: String){
+//        viewModelScope.launch {
+//            moviesRepository.searchMovie(API_KEY,query,page)
+//        }
+//    }
 
 }
