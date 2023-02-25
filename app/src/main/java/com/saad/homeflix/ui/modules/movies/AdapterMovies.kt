@@ -11,7 +11,7 @@ import com.saad.homeflix.utils.loadImage
 
 class AdapterMovies : PagingDataAdapter<ResultsItem, AdapterMovies.MoviesVH>(COMPARATOR) {
 
-    class MoviesVH(private val binding: RvMoviesItemBinding) :
+    inner class MoviesVH(private val binding: RvMoviesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResultsItem) {
             //setting data
