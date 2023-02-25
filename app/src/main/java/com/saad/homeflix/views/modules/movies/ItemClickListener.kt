@@ -1,4 +1,4 @@
-package com.saad.homeflix.ui.modules.movies
+package com.saad.homeflix.views.modules.movies
 
 import com.saad.homeflix.data.models.ResultsItem
 

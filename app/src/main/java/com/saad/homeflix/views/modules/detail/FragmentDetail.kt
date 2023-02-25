@@ -1,4 +1,4 @@
-package com.saad.homeflix.ui.modules.detail
+package com.saad.homeflix.views.modules.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.saad.homeflix.R
 import com.saad.homeflix.data.models.ResultsItem
 import com.saad.homeflix.databinding.FragmentDetailBinding
 import com.saad.homeflix.utils.loadImage

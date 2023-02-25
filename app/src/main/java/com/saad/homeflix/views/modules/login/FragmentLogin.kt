@@ -1,4 +1,4 @@
-package com.saad.homeflix.ui.modules.login
+package com.saad.homeflix.views.modules.login
 
 import android.os.Bundle
 import android.view.LayoutInflater

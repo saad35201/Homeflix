@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentMovies"
-        android:name="com.saad.homeflix.ui.modules.movies.FragmentMovies"
+        android:name="com.saad.homeflix.views.modules.movies.FragmentMovies"
         android:label="fragment_movies"
         tools:layout="@layout/fragment_movies" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetail"
-        android:name="com.saad.homeflix.ui.modules.detail.FragmentDetail"
+        android:name="com.saad.homeflix.views.modules.detail.FragmentDetail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentFavorites"
-        android:name="com.saad.homeflix.ui.modules.favorites.FragmentFavorites"
+        android:name="com.saad.homeflix.views.modules.favorites.FragmentFavorites"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.saad.homeflix.ui.modules.login.FragmentLogin"
+        android:name="com.saad.homeflix.views.modules.login.FragmentLogin"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentRegister"
-        android:name="com.saad.homeflix.ui.modules.register.FragmentRegister"
+        android:name="com.saad.homeflix.views.modules.register.FragmentRegister"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action

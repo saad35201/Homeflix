@@ -1,4 +1,4 @@
-package com.saad.homeflix.ui
+package com.saad.homeflix.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

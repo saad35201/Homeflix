@@ -1,4 +1,4 @@
-package com.saad.homeflix.ui.modules.register
+package com.saad.homeflix.views.modules.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

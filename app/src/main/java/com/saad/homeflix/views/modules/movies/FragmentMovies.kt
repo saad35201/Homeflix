@@ -1,17 +1,16 @@
-package com.saad.homeflix.ui.modules.movies
+package com.saad.homeflix.views.modules.movies
 
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.saad.homeflix.data.models.ResponseMovies
 import com.saad.homeflix.data.models.ResultsItem
 import com.saad.homeflix.databinding.FragmentMoviesBinding
-import com.saad.homeflix.ui.base.BaseFragment
+import com.saad.homeflix.views.base.BaseFragment
 import com.saad.homeflix.utils.NetworkResult
 import com.saad.homeflix.utils.observe
 import com.saad.homeflix.utils.progressDialog
