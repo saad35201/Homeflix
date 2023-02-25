@@ -16,9 +16,8 @@ import javax.inject.Inject
 class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryMovies) :
     ViewModel() {
 
-    //live data all movies
+    //live data movies
     private val mMoviesLiveData : MutableLiveData<NetworkResult<ResponseMovies>> by lazy { MutableLiveData() }
-
     val moviesLiveData: LiveData<NetworkResult<ResponseMovies>> get() = mMoviesLiveData
 
 
@@ -29,10 +28,11 @@ class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryM
         }
     }
 
-//    fun searchMovie(query: String){
-//        viewModelScope.launch {
-//            moviesRepository.searchMovie(API_KEY,query,page)
-//        }
-//    }
+    fun searchMovie(query: String){
+        viewModelScope.launch {
+            mMoviesLiveData.postValue(NetworkResult.Loading())
+            mMoviesLiveData.postValue(moviesRepository.searchMovie(API_KEY,query,1))
+        }
+    }
 
 }
