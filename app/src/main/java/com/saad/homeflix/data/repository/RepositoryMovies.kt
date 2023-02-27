@@ -12,7 +12,7 @@ class RepositoryMovies @Inject constructor(
 ) {
 
     //paging data
-    private val pageSize = 40
+    private val pageSize = 20
     private val prefetchDistance = 3 * pageSize
     private val initialLoadSize = 2 * pageSize
     private val maxSize = pageSize + (2 * prefetchDistance)
@@ -23,7 +23,8 @@ class RepositoryMovies @Inject constructor(
             pageSize = pageSize,
             maxSize = maxSize,
             prefetchDistance = prefetchDistance,
-            initialLoadSize = initialLoadSize
+            initialLoadSize = initialLoadSize,
+            enablePlaceholders = false
         )
     ).liveData
 

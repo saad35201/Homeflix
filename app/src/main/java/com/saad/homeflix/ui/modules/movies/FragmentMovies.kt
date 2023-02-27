@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.saad.homeflix.data.paging.LoaderAdapter
 import com.saad.homeflix.databinding.FragmentMoviesBinding
@@ -53,10 +54,14 @@ class FragmentMovies : Fragment() {
 
         //setting adapter
         val adapter = AdapterMovies()
-        mBinding.rvMovies.adapter = adapter.withLoadStateHeaderAndFooter(
-            header = LoaderAdapter(),
-            footer = LoaderAdapter()
-        )
+        mBinding.rvMovies.apply {
+            this.setHasFixedSize(true)
+            this.adapter = adapter
+//                .withLoadStateHeaderAndFooter(
+//                header = LoaderAdapter(),
+//                footer = LoaderAdapter()
+//            )
+        }
 
         //observing live data for network connectivity
         val connection = context?.let { ConnectivityStatus(it) }
