@@ -1,8 +1,8 @@
 package com.saad.homeflix.di
 
 import android.content.Context
-import com.saad.homeflix.data.network.local.LocalDB
 import com.saad.homeflix.data.network.local.MovieDao
+import com.saad.homeflix.data.network.local.RoomDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,13 +16,13 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideRoomDB(@ApplicationContext appContext: Context): LocalDB {
-        return LocalDB.getInstance(appContext)
+    fun provideRoomDB(@ApplicationContext appContext: Context): RoomDB {
+        return RoomDB.getInstance(appContext)
     }
 
     @Singleton
     @Provides
-    fun provideMovieDao(roomDB: LocalDB) : MovieDao {
+    fun provideMovieDao(roomDB: RoomDB): MovieDao {
         return roomDB.movieDao()
     }
 

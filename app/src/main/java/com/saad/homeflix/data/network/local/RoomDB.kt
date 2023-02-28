@@ -10,20 +10,20 @@ import com.saad.homeflix.utils.LOCAL_DATABASE_NAME
 
 @Database(entities = [ResultsItem::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
-abstract class LocalDB : RoomDatabase() {
+abstract class RoomDB : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
 
     companion object {
 
         @Volatile
-        private var INSTANCE: LocalDB? = null
+        private var INSTANCE: RoomDB? = null
 
-        fun getInstance(context: Context): LocalDB {
+        fun getInstance(context: Context): RoomDB {
             if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        LocalDB::class.java,
+                        RoomDB::class.java,
                         LOCAL_DATABASE_NAME,
                     ).build()
             }

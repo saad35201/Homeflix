@@ -26,6 +26,9 @@ data class ResponseMovies(
 @Entity(tableName = "movie")
 data class ResultsItem(
 
+	//added this val for room db
+	val isLiked: Boolean = false,
+
 	@field:JsonProperty("overview")
 	val overview: String? = null,
 

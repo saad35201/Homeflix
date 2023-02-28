@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class VmMoviesList @Inject constructor(private val moviesRepository: RepositoryMovies) :
+class VmMovies @Inject constructor(private val moviesRepository: RepositoryMovies) :
     ViewModel() {
 
     //live data movies

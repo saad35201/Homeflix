@@ -19,4 +19,13 @@ interface MovieDao {
     @Delete
     suspend fun deleteMovie(movie: ResultsItem)
 
+    @Query("SELECT * FROM movie WHERE isLiked = 1")
+    suspend fun getAllLikedMovies() : List<ResultsItem>
+
+    @Query("UPDATE movie SET isLiked = 1 WHERE id =:movieId")
+    suspend fun likeMovie(movieId: Int)
+
+    @Query("UPDATE movie SET isLiked = 0 WHERE id =:movieId")
+    suspend fun dislikeMovie(movieId: Int)
+
 }

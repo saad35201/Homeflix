@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.saad.homeflix.R
 import com.saad.homeflix.data.models.ResponseMovies
 import com.saad.homeflix.data.models.ResultsItem
 import com.saad.homeflix.databinding.FragmentMoviesBinding
@@ -25,7 +26,7 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
     private lateinit var mBinding: FragmentMoviesBinding
 
     //view model
-    private val mMoviesVm by viewModels<VmMoviesList>()
+    private val mMoviesVm by viewModels<VmMovies>()
 
     //progress dialog
     private lateinit var mProgressDialog: Dialog
@@ -78,6 +79,11 @@ class FragmentMovies : BaseFragment(), ItemClickListener {
         closeBtn.setOnClickListener {
             mBinding.svMovies.setQuery("", false)
             mMoviesVm.getMovies()
+        }
+
+        //btn fav click listener
+        mBinding.fabFavorites.setOnClickListener {
+            findNavController().navigate(R.id.action_fragmentMovies_to_fragmentFavorites)
         }
 
     }
