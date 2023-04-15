@@ -31,6 +31,10 @@ class RepositoryMovies @Inject constructor(
 
     //for local calls
 
+    suspend fun saveMovie(movie: ResultsItem) {
+        return moviesDao.addMovie(movie)
+    }
+
      suspend fun getAllLikedMovies(): List<ResultsItem> {
          return moviesDao.getAllLikedMovies()
      }

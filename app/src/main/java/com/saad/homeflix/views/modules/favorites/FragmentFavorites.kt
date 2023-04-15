@@ -13,9 +13,10 @@ import com.saad.homeflix.utils.observe
 import com.saad.homeflix.views.base.BaseFragment
 import com.saad.homeflix.views.modules.movies.AdapterMovies
 import com.saad.homeflix.views.modules.movies.ItemClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class FragmentFavorites : BaseFragment(), ItemClickListener {
 
     //binding

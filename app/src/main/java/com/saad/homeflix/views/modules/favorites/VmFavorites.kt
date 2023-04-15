@@ -23,6 +23,10 @@ class VmFavorites @Inject constructor(
         mMoviesLiveData.value = moviesRepository.getAllLikedMovies()
     }
 
+    suspend fun addMovie(movie: ResultsItem){
+        moviesRepository.saveMovie(movie)
+    }
+
     suspend fun likeMovie(movieId: Int){
         moviesRepository.likeMovie(movieId)
     }
